@@ -1,5 +1,5 @@
-# Getting and Cleaning Data Project John Hopkins Coursera
-# Author: Michael Galarnyk
+# Getting and Cleaning Data Project John Hopkins Coursera Peer-graded Assignment
+# Ericson D. Dimaunahan
 
 # 1. Merges the training and the test sets to create one data set.
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
