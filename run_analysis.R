@@ -24,7 +24,7 @@ featuresWanted <- grep("(mean|std)\\(\\)", features[, featureNames])
 measurements <- features[featuresWanted, featureNames]
 measurements <- gsub('[()]', '', measurements)
 
-# Load train datasets
+#Loading train datasets
 train <- fread(file.path(path, "UCI HAR Dataset/train/X_train.txt"))[, featuresWanted, with = FALSE]
 data.table::setnames(train, colnames(train), measurements)
 trainActivities <- fread(file.path(path, "UCI HAR Dataset/train/Y_train.txt")
@@ -33,7 +33,7 @@ trainSubjects <- fread(file.path(path, "UCI HAR Dataset/train/subject_train.txt"
                        , col.names = c("SubjectNum"))
 train <- cbind(trainSubjects, trainActivities, train)
 
-# Load test datasets
+#Loading test datasets
 test <- fread(file.path(path, "UCI HAR Dataset/test/X_test.txt"))[, featuresWanted, with = FALSE]
 data.table::setnames(test, colnames(test), measurements)
 testActivities <- fread(file.path(path, "UCI HAR Dataset/test/Y_test.txt")
@@ -42,10 +42,10 @@ testSubjects <- fread(file.path(path, "UCI HAR Dataset/test/subject_test.txt")
                       , col.names = c("SubjectNum"))
 test <- cbind(testSubjects, testActivities, test)
 
-# merge datasets
+#Merging datasets
 combined <- rbind(train, test)
 
-# Convert classLabels to activityName basically. More explicit. 
+#Converting classLabels to activityName basically. More explicit. 
 combined[["Activity"]] <- factor(combined[, Activity]
                               , levels = activityLabels[["classLabels"]]
                               , labels = activityLabels[["activityName"]])
